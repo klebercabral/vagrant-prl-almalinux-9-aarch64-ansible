@@ -1,6 +1,6 @@
 Vagrant.configure("2") do |config|
 
-    N = 2
+    N = 1
 
     (1..N).each do |machine_id|
 
@@ -21,7 +21,7 @@ Vagrant.configure("2") do |config|
 #          prl.customize ["set", :id, "--adaptive-hypervisor", "on"]
         end
 
-        machine.vm.provision "shell", inline: "yum update -y"
+        machine.vm.provision "ansible", playbook: "play.yaml", verbose: "true"
 
       end
 
